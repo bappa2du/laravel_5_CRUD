@@ -1,0 +1,11 @@
+/vendor
+/storage
+.idea
+public/css
+public/js
+public/fonts
+composer.phar
+composer.lock
+.env.*
+.DS_Store
+Thumbs.db
