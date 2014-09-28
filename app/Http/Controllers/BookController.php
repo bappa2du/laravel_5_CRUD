@@ -7,6 +7,10 @@ use App\Model\Book;
 
 class BookController extends Controller
 {
+    public function __construct()
+    {
+        $this -> beforeFilter('book',['only'=>['getCreate']]);
+    }
     public function getIndex()
     {
         $book = Book::all();

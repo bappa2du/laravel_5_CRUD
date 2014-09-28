@@ -5,6 +5,10 @@
    <h2>Edit Book</h2>
     {!!Form::model($book,["url"=>"/book/update/{$book->id}",'method'=>'PUT'])!!}
         <div class="form-group">
+            {!!Form::label('id','Id',['class'=>''])!!}
+            {!!Form::text('id',null,['class'=>'form-control','disabled'])!!}
+        </div>
+        <div class="form-group">
             {!!Form::label('name','Name',['class'=>''])!!}
             {!!Form::text('name',null,['class'=>'form-control'])!!}
         </div>
