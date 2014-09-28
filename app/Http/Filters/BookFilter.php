@@ -15,13 +15,10 @@ class BookFilter {
 
 	public function filter(Route $route, Request $request)
 	{
-		if($this->auth->check())
+		if($this->auth->guest())
         {
-            return redirect("/book/create");
-        }
-        else
-        {
-            return redirect("/book");
+            return redirect("/book")
+                ->with("message","Sorry.. Access-denied");
         }
 	}
 

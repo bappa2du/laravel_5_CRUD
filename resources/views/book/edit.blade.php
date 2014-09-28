@@ -3,6 +3,9 @@
 @section('content')
 
    <h2>Edit Book</h2>
+   @foreach($errors->all() as $error)
+    <li>{!! $error !!}</li>
+   @endforeach
     {!!Form::model($book,["url"=>"/book/update/{$book->id}",'method'=>'PUT'])!!}
         <div class="form-group">
             {!!Form::label('id','Id',['class'=>''])!!}

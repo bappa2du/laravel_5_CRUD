@@ -3,13 +3,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Routing\Controller;
 use Illuminate\Http\Request;
+use App\Http\Requests\BookRequest;
 use App\Model\Book;
 
 class BookController extends Controller
 {
     public function __construct()
     {
-        $this -> beforeFilter('book',['only'=>['getCreate']]);
+        $this -> beforeFilter('book',['only'=>['getDelete']]);
     }
     public function getIndex()
     {
@@ -20,7 +21,7 @@ class BookController extends Controller
     {
         return view("book.create");
     }
-    public function postStore(Request $request)
+    public function postStore(BookRequest $request)
     {
         $input = $request->all();
         Book::create($input);
@@ -38,7 +39,7 @@ class BookController extends Controller
         $book = Book::find($id);
         return view("/book/edit",compact('book'));
     }
-    public function putUpdate(Request $request,$id)
+    public function putUpdate(BookRequest $request,$id)
     {
         $input = $request->all();
         $book = Book::find($id);

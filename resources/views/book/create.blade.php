@@ -3,6 +3,9 @@
 @section('content')
 
     <h2>Create View</h2>
+    @foreach($errors->all() as $error)
+        <p>{!! $error !!}</p>
+    @endforeach
     {!!Form::open(['url'=>'book/store'])!!}
         <div class="form-group">
             {!!Form::label('Name','Name',['class'=>''])!!}

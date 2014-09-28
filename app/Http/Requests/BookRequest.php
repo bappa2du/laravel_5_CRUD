@@ -12,7 +12,7 @@ class BookRequest extends FormRequest {
 	public function rules()
 	{
 		return [
-			'name'=>'required',
+			'name'=>'required|min:4',
 			'topic'=>'required',
 		];
 	}
@@ -24,7 +24,13 @@ class BookRequest extends FormRequest {
 	 */
 	public function authorize()
 	{
-		return false;
+		return true;
 	}
+    public function forbiddenResponse()
+    {
+        return redirect("/book")
+            ->with('message','sorry unable to to this');
+    }
+
 
 }
