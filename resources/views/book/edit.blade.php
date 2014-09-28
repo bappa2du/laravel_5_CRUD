@@ -2,9 +2,9 @@
 
 @section('content')
 
-   <h2>Edit Book</h2>
+   <h3 class="text-center alert alert-success">Edit Book</h3>
    @foreach($errors->all() as $error)
-    <li>{!! $error !!}</li>
+    <p class="alert alert-warning">{!! $error !!}</p>
    @endforeach
     {!!Form::model($book,["url"=>"/book/update/{$book->id}",'method'=>'PUT'])!!}
         <div class="form-group">
@@ -20,7 +20,7 @@
             {!!Form::text('topic',null,['class'=>'form-control'])!!}
         </div>
         <div class="form-group">
-            {!!Form::submit('Update',['class'=>'form-control btn btn-default'])!!}
+            {!!Form::submit('Update',['class'=>'form-control btn btn-primary'])!!}
         </div>
     {!!Form::close()!!}
 

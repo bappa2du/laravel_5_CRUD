@@ -1,29 +1,34 @@
 @extends('book.layout')
 
 @section('content')
+
+    <h3 class="text-center alert alert-success">Book List</h3>
+
     @if(Session::has("message"))
-        {!! Session::get("message") !!}
+       <p class="alert alert-info">{!! Session::get("message") !!}</p>
     @endif
 
-    <table border="1px">
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Topic</th>
-            <th colspan="2">Action</th>
-        </tr>
-        @foreach($book as $item)
-        <tr>
-            <td>{!! $item->id !!}</td>
-            <td>{!! $item->name !!}</td>
-            <td>{!! $item->topic !!}</td>
-            <td>{!!HTML::link("book/edit/{$item->id}",'Edit',['class'=>''])!!}</td>
-            <td>{!!HTML::link("book/delete/{$item->id}",'Delete',['class'=>''])!!}</td>
-        </tr>
-        @endforeach
-    </table>
+    <div class="table-responsive">
+    <table class="table table-bordered table-striped">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Topic</th>
+                <th colspan="2">Action</th>
+            </tr>
+            @foreach($book as $item)
+            <tr>
+                <td>{!! $item->id !!}</td>
+                <td>{!! $item->name !!}</td>
+                <td>{!! $item->topic !!}</td>
+                <td>{!!HTML::link("book/edit/{$item->id}",'Edit',['class'=>'btn btn-info'])!!}</td>
+                <td>{!!HTML::link("book/delete/{$item->id}",'Delete',['class'=>'btn btn-danger'])!!}</td>
+            </tr>
+            @endforeach
+        </table>
+    </div>
     <p>
-    {!!HTML::link('/book/create','Create New Book',['class'=>''])!!}
+    {!!HTML::link('/book/create','Create New Book',['class'=>'btn btn-info'])!!}
     </p>
 
 @stop

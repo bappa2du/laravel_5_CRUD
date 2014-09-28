@@ -2,6 +2,7 @@
 
 use Exception;
 use PDOException;
+use ErrorException;
 use Illuminate\Contracts\Logging\Log;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Contracts\Exception\Handler;
@@ -36,6 +37,12 @@ class ErrorServiceProvider extends ServiceProvider {
         {
             return redirect('/')
                 ->with('message','Database error');
+        });
+
+        $handler->error(function(ErrorException $e)
+        {
+            return redirect('/book')
+                ->with('message','Something goes error');
         });
 	}
 

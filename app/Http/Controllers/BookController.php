@@ -8,10 +8,10 @@ use App\Model\Book;
 
 class BookController extends Controller
 {
-    public function __construct()
-    {
-        $this -> beforeFilter('book',['only'=>['getDelete']]);
-    }
+//    public function __construct()
+//    {
+//        $this -> beforeFilter('book',['only'=>['getDelete']]);
+//    }
     public function getIndex()
     {
         $book = Book::all();
@@ -30,9 +30,10 @@ class BookController extends Controller
     }
     public function getDelete(Request $request,$id)
     {
+
         Book::find($id)->delete();
         return redirect('/book')
-            ->with('message','Successfully Deleted');
+            ->with('message',"Successfully Deleted Book ");
     }
     public function getEdit($id)
     {
