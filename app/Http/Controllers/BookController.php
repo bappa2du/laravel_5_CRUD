@@ -28,9 +28,8 @@ class BookController extends Controller
         return redirect('/book')
             ->with('message','Data inserted successfully');
     }
-    public function getDelete(Request $request,$id)
+    public function getDelete($id)
     {
-
         Book::find($id)->delete();
         return redirect('/book')
             ->with('message',"Successfully Deleted Book ");

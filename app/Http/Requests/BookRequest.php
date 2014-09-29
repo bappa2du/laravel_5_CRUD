@@ -14,7 +14,7 @@ class BookRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|alpha|min:6',
+            'name' => 'required|min:6',
             'topic'=> 'required|min:6'
         ];
     }
