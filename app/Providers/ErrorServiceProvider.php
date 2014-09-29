@@ -33,11 +33,11 @@ class ErrorServiceProvider extends ServiceProvider {
          * PDOException error handling
          */
 
-        $handler->error(function(PDOException $e)
-        {
-            return redirect('/')
-                ->with('message','Database error');
-        });
+//        $handler->error(function(PDOException $e)
+//        {
+//            return redirect('/')
+//                ->with('message','Database error');
+//        });
 
 //        $handler->error(function(ErrorException $e)
 //        {

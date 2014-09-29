@@ -2,14 +2,23 @@
 
 @section('content')
     <p class="alert alert-success">Login Form</p>
-    {!!Form::open(['url'=>'user/login','method'=>'POST'])!!}
+    @if(Session::has("message"))
+        <p class="alert alert-info">{!! Session::get("message") !!}</p>
+    @endif
+    @if(Session::has("mismatch"))
+        <p class="alert alert-danger">{!! Session::get("mismatch") !!}</p>
+    @endif
+    @foreach($errors->all() as $error)
+            <p class="alert alert-warning">{!! $error !!}</p>
+    @endforeach
+    {!!Form::open(['url'=>'user/login'])!!}
         <div class="form-group">
             {!!Form::label('username','Username',['class'=>''])!!}
-            {!!Form::text('username',null,['class'=>'form-control'])!!}
+            {!!Form::text('username',null,['class'=>'form-control','required'])!!}
         </div>
         <div class="form-group">
             {!!Form::label('password','Password',['class'=>''])!!}
-            {!!Form::password('password',['class'=>'form-control'])!!}
+            {!!Form::password('password',['class'=>'form-control','required'])!!}
         </div>
         <div class="form-group">
             {!!Form::submit('Submit',['class'=>'form-control btn btn-primary'])!!}

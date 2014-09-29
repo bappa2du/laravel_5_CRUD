@@ -2,8 +2,9 @@
 
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Support\Facades\Schema;
 
-class UserTable extends Migration {
+class Usertable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -16,8 +17,9 @@ class UserTable extends Migration {
             $table->increments('id');
             $table->string('username');
             $table->string('password');
+            $table->rememberToken();
             $table->timestamps();
-        }); 
+        });
 	}
 
 	/**

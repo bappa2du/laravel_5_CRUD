@@ -16,8 +16,8 @@ class BookFilter
     public function filter()
     {
         if ($this->auth->guest()) {
-            return redirect("/book")
-                ->with("message", "sorry this is an error..");
+            return redirect("/user/login")
+                ->with("message", "Please login to view this page");
         }
     }
 

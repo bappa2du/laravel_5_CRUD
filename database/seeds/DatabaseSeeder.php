@@ -4,6 +4,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
 use App\Model\Book;
 use App\Model\User;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder {
 
@@ -30,7 +31,7 @@ class UserTableSeeder extends Seeder
         ]);
         User::create([
             "username" => "bappa",
-            "password" => "1234"
+            "password" => Hash::make(1234),
         ]);
     }
 }

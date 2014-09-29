@@ -2,7 +2,10 @@
 
 @section('content')
 
-    <h3 class="text-center alert alert-success">Book List</h3>
+    <h3 class="text-center alert alert-success">
+        Book List || {!! Auth::user()->username !!}
+        ({!!HTML::link('/user/logout','Logout',['class'=>''])!!})
+    </h3>
 
     @if(Session::has("message"))
        <p class="alert alert-info">{!! Session::get("message") !!}</p>

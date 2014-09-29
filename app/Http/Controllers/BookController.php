@@ -9,7 +9,7 @@ class BookController extends Controller
 {
     public function __construct()
     {
-        $this -> beforeFilter('book',['only'=>['getDelete']]);
+        $this -> beforeFilter('book');
     }
     public function getIndex()
     {
