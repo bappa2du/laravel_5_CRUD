@@ -39,11 +39,11 @@ class ErrorServiceProvider extends ServiceProvider {
                 ->with('message','Database error');
         });
 
-        $handler->error(function(ErrorException $e)
-        {
-            return redirect('/book')
-                ->with('message','Something goes error');
-        });
+//        $handler->error(function(ErrorException $e)
+//        {
+//            return redirect('/book')
+//                ->with('message','Something goes error');
+//        });
 	}
 
 	/**

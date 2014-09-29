@@ -14,4 +14,8 @@ class UserController extends Controller
     {
         $input = $request->all();
     }
+    public function getRegister()
+    {
+        return view("user/register");
+    }
 }
