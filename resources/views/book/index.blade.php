@@ -32,6 +32,7 @@
     </div>
     <p>
     {!!HTML::link('/book/create','Create New Book',['class'=>'btn btn-info'])!!}
+    {!!HTML::link('/user/settings','User Settings',['class'=>'pull-right btn btn-warning'])!!}
     </p>
 
 @stop
