@@ -2,16 +2,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Routing\Controller;
-use Illuminate\Http\Request;
 use App\Http\Requests\BookRequest;
 use App\Model\Book;
 
 class BookController extends Controller
 {
-//    public function __construct()
-//    {
-//        $this -> beforeFilter('book',['only'=>['getDelete']]);
-//    }
+    public function __construct()
+    {
+        $this -> beforeFilter('book',['only'=>['getDelete']]);
+    }
     public function getIndex()
     {
         $book = Book::all();
