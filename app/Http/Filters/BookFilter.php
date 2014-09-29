@@ -1,8 +1,6 @@
 <?php
 namespace App\Http\Filters;
 
-use Illuminate\Http\Request;
-use Illuminate\Routing\Route;
 use Illuminate\Contracts\Auth\Authenticator;
 
 class BookFilter
@@ -15,11 +13,11 @@ class BookFilter
         $this->auth = $authenticator;
     }
 
-    public function filter(Route $route, Request $request)
+    public function filter()
     {
         if ($this->auth->guest()) {
             return redirect("/book")
-                ->with("message", "sorry access denied!");
+                ->with("message", "sorry this is an error..");
         }
     }
 
