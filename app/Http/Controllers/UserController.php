@@ -18,7 +18,8 @@ class UserController extends Controller
     public function __construct(Authenticator $auth)
     {
         $this->auth = $auth;
-        $this->beforeFilter('book',['only'=>['getSettings','getSettingsEdit']]);
+        $this->beforeFilter('book',['only'=>['getSettings','getSettingsEdit','putSettingsEdit']]);
+        $this->beforeFilter('admin',['only'=>['getSettings','getSettingsEdit','putSettingsEdit']]);
     }
     public function getLogin()
     {

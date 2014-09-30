@@ -32,7 +32,9 @@
     </div>
     <p>
     {!!HTML::link('/book/create','Create New Book',['class'=>'btn btn-info'])!!}
+    @if(Auth::user()->username == 'admin')
     {!!HTML::link('/user/settings','User Settings',['class'=>'pull-right btn btn-warning'])!!}
+    @endif
     </p>
 
 @stop

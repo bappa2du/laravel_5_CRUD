@@ -36,6 +36,7 @@ class FilterServiceProvider extends ServiceProvider {
         'create_book' =>'App\Http\Filters\CreateFilter',
         'edit_book' =>'App\Http\Filters\EditFilter',
         'delete_book' =>'App\Http\Filters\DeleteFilter',
+        'admin' =>'App\Http\Filters\AdminFilter',
 	];
 
 }
