@@ -14,7 +14,7 @@ class UserController extends Controller
     public function __construct(Authenticator $auth)
     {
         $this->auth = $auth;
-        $this->beforeFilter('book',['only'=>'getSettings']);
+        $this->beforeFilter('book',['only'=>['getSettings','getSettingsEdit']]);
     }
     public function getLogin()
     {
@@ -56,5 +56,9 @@ class UserController extends Controller
     {
         $user = User::all();
         return view("user/settings",compact('user'));
+    }
+    public function getSettingsEdit()
+    {
+        return view("user/settings/edit");
     }
 }
