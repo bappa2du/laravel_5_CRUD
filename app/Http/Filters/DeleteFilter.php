@@ -19,14 +19,14 @@ class DeleteFilter
     public function filter()
     {
         $settings = DB::table('users')
-            ->join('usersettings', 'users.id', '=', 'usersettings.id')
+            ->join('usersettings', 'users.id', '=', 'usersettings.user_id')
             ->where('users.id','=',Auth::user()->id)
             ->get();
         $settings = $settings[0];
         if ($settings->delete_book != '1')
         {
             return redirect("/book")
-                ->with("message", "Sorry Unauthorized");
+                ->with("message", "Delete Book operation Unauthorized for you");
         }
     }
 

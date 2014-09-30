@@ -55,10 +55,13 @@ class UserController extends Controller
             $user->username = $request->input('username');
             $user->password = Hash::make($request->input('password'));
             $user ->save();
+
+
             $settings = new Settings;
             /*
              * default privilege only create book
              */
+            $settings -> user_id = $user->id;
             $settings -> create_book = 1;
             $settings -> edit_book = 0;
             $settings -> delete_book = 0;
@@ -75,7 +78,7 @@ class UserController extends Controller
     public function getSettings()
     {
         $settings = DB::table('users')
-            ->leftJoin('usersettings', 'users.id', '=', 'usersettings.id')
+            ->leftJoin('usersettings', 'users.id', '=', 'usersettings.user_id')
             ->get();
         //$settings = Settings::all();
         return view("user/settings",compact('settings'));
@@ -83,7 +86,7 @@ class UserController extends Controller
     public function getSettingsEdit($id)
     {
         $settings = DB::table('users')
-            ->join('usersettings','users.id','=','usersettings.id')
+            ->join('usersettings','users.id','=','usersettings.user_id')
             ->where('usersettings.id','=',$id)
             ->get();
         $settings = $settings[0];
