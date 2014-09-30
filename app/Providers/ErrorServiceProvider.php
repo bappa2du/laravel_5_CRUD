@@ -28,24 +28,24 @@ class ErrorServiceProvider extends ServiceProvider {
 		$handler->error(function(Exception $e) use ($log)
 		{
 			$log->error($e);
-			return redirect('/user/login')->with('mismatch','Wrong address');
+			//return redirect('/user/login')->with('mismatch','Wrong address');
 		});
 
         /*
          * PDOException error handling
          */
 
-       $handler->error(function(PDOException $e)
-       {
-           return redirect('/user/login')
-               ->with('mismatch','Database error');
-       });
+//       $handler->error(function(PDOException $e)
+//       {
+//           return redirect('/user/login')
+//               ->with('mismatch','Database error');
+//       });
 
-       $handler->error(function(ErrorException $e)
-       {
-           return redirect('/book')
-               ->with('message','Something goes error');
-       });
+//       $handler->error(function(ErrorException $e)
+//       {
+//           return redirect('/book')
+//               ->with('message','Something goes error');
+//       });
         
 	}
 

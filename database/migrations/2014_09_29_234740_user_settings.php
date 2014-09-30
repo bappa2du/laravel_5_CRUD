@@ -14,11 +14,9 @@ class UserSettings extends Migration {
 	{
         Schema::create('usersettings', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->string('create_book');
-            $table->string('edit_book');
-            $table->string('delete_book');
+            $table->tinyInteger('create_book');
+            $table->tinyInteger('edit_book');
+            $table->tinyInteger('delete_book');
             $table->timestamps();
         });
 	}
