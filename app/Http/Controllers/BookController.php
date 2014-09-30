@@ -18,7 +18,7 @@ class BookController extends Controller
     }
     public function getIndex()
     {
-        $book = Book::all();
+        $book = Book::paginate(3);
         $settings = DB::table('users')
             ->join('usersettings', 'users.id', '=', 'usersettings.user_id')
             ->where('users.id','=',Auth::user()->id)

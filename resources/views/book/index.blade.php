@@ -38,6 +38,7 @@
             @endforeach
         </table>
     </div>
+    {!! $book->links() !!}
     <p>
     {!!HTML::link('/book/create','Create New Book',['class'=>'btn btn-info'])!!}
     @if(Auth::user()->username == 'admin')
