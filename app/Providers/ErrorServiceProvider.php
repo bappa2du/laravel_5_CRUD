@@ -28,7 +28,7 @@ class ErrorServiceProvider extends ServiceProvider {
 		$handler->error(function(Exception $e) use ($log)
 		{
 			$log->error($e);
-			//return redirect('/user/login')->with('mismatch','Wrong address');
+			return redirect('/user/login')->with('mismatch','Wrong address');
 		});
 
 
