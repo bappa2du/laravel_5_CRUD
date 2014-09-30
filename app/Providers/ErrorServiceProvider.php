@@ -31,6 +31,7 @@ class ErrorServiceProvider extends ServiceProvider {
 			//return redirect('/user/login')->with('mismatch','Wrong address');
 		});
 
+
         /*
          * PDOException error handling
          */

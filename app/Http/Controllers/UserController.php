@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 use App\Model\Settings;
 use App\Model\User;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use App\Http\Requests\UserRequest;
@@ -48,20 +49,28 @@ class UserController extends Controller
     }
     public function postRegister(UserRequest $request)
     {
-        $user = new User;
-        $user->username = $request->input('username');
-        $user->password = Hash::make($request->input('password'));
-        $user ->save();
-        $settings = new Settings;
-        /*
-         * default privilege only create book
-         */
-        $settings -> create_book = 1;
-        $settings -> edit_book = 0;
-        $settings -> delete_book = 0;
-        $settings -> save();
-        return redirect('/user/login')
-            ->with('message','Registered successfully');
+        try
+        {
+            $user = new User;
+            $user->username = $request->input('username');
+            $user->password = Hash::make($request->input('password'));
+            $user ->save();
+            $settings = new Settings;
+            /*
+             * default privilege only create book
+             */
+            $settings -> create_book = 1;
+            $settings -> edit_book = 0;
+            $settings -> delete_book = 0;
+            $settings -> save();
+            return redirect('/user/login')
+                ->with('message','Registered successfully');
+        }
+        catch(QueryException $e)
+        {
+            return redirect('/user/register')
+                ->with('message','Username not available');
+        }
     }
     public function getSettings()
     {

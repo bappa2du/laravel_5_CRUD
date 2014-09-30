@@ -10,7 +10,9 @@ class BookController extends Controller
     public function __construct()
     {
         $this -> beforeFilter('book');
-        $this -> beforeFilter('create_book',['only'=>'getCreate']);
+        $this -> beforeFilter('create_book',['only'=>['getCreate','postStore']]);
+        $this -> beforeFilter('edit_book',['only'=>['getEdit','putUpdate']]);
+        $this -> beforeFilter('delete_book',['only'=>'getDelete']);
     }
     public function getIndex()
     {

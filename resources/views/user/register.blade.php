@@ -1,7 +1,10 @@
 @extends('book.layout')
 
 @section('content')
-    <p class="alert alert-success">Registration Form</p>
+    <h3 class="alert alert-success">Registration Form</h3>
+    @if(Session::has("message"))
+        <p class="alert alert-success text-center">{!! Session::get("message") !!}</p>
+    @endif
     {!!Form::open()!!}
         <div class="form-group">
             {!!Form::label('username','Username',['class'=>''])!!}
