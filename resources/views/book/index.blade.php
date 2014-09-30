@@ -24,8 +24,16 @@
                 <td>{!! $item->id !!}</td>
                 <td>{!! $item->name !!}</td>
                 <td>{!! $item->topic !!}</td>
-                <td>{!!HTML::link("book/edit/{$item->id}",'Edit',['class'=>'btn btn-info'])!!}</td>
-                <td>{!!HTML::link("book/delete/{$item->id}",'Delete',['class'=>'btn btn-danger'])!!}</td>
+                <td>
+                    @if($settings->edit_book == '1')
+                    {!!HTML::link("book/edit/{$item->id}",'Edit',['class'=>'btn btn-info'])!!}
+                    @endif
+                </td>
+                <td>
+                    @if($settings->delete_book == '1')
+                    {!!HTML::link("book/delete/{$item->id}",'Delete',['class'=>'btn btn-danger'])!!}
+                    @endif
+                </td>
             </tr>
             @endforeach
         </table>

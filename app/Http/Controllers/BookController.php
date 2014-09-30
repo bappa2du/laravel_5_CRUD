@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use Illuminate\Routing\Controller;
 use App\Http\Requests\BookRequest;
 use App\Model\Book;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class BookController extends Controller
 {
@@ -17,7 +19,14 @@ class BookController extends Controller
     public function getIndex()
     {
         $book = Book::all();
-        return view("book.index",compact('book'));
+        $settings = DB::table('users')
+            ->join('usersettings', 'users.id', '=', 'usersettings.user_id')
+            ->where('users.id','=',Auth::user()->id)
+            ->get();
+        $settings = $settings[0];
+        return view("book.index")
+            ->with(compact("book"))
+            ->with(compact('settings'));
     }   
     public function getCreate()
     {
