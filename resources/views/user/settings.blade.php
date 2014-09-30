@@ -5,6 +5,9 @@
         User Privilege || {!! Auth::user()->username !!}
         ({!!HTML::link('/user/logout','Logout',['class'=>''])!!})
     </h3>
+    @if(Session::has("message"))
+        <p class="alert alert-success text-center">{!! Session::get("message") !!}</p>
+    @endif
     <div class="table-responsive">
         <table class="table table-bordered">
             <tr>

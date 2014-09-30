@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 use App\Model\Settings;
 use App\Model\User;
+use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use App\Http\Requests\UserRequest;
 use Illuminate\Contracts\Auth\Authenticator;
@@ -72,18 +73,28 @@ class UserController extends Controller
     }
     public function getSettingsEdit($id)
     {
-//        $settings = DB::table('users')
-//            ->join('usersettings','user.id','=','usersettings.id')
-//            ->where('usersettings.id','=',$id)
-//            ->get();
-//        return view("user/settings/edit",compact('settings'));
-
         $settings = DB::table('users')
-            ->join('usersettings',function($join)
-            {
-                $join->on('user.id','=','usersettings.id')
-                    ->where('usersettings.id','=',$id);
-            })->get();
+            ->join('usersettings','users.id','=','usersettings.id')
+            ->where('usersettings.id','=',$id)
+            ->get();
+        $settings = $settings[0];
+
         return view("user/settings/edit",compact('settings'));
+
+    }
+    public function putSettingsEdit($id,Request $request)
+    {
+        $settings =Settings::find($id);
+        if($request->input('create_book') === 'create'){$m = 1;}else{$m=0;}
+        $settings->create_book = $m;
+        if($request->input('edit_book') === 'edit'){$m = 1;}else{$m=0;}
+        $settings->edit_book = $m;
+        if($request->input('delete_book') === 'delete'){$m = 1;}else{$m=0;}
+        $settings->delete_book = $m;
+
+
+        $settings->save();
+        return redirect("/user/settings")
+            ->with('message','Settings updated');
     }
 }

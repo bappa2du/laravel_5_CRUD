@@ -33,6 +33,7 @@ class FilterServiceProvider extends ServiceProvider {
 		'csrf' => 'App\Http\Filters\CsrfFilter',
 		'guest' => 'App\Http\Filters\GuestFilter',
         'book' =>'App\Http\Filters\BookFilter',
+        'create_book' =>'App\Http\Filters\CreateFilter',
 	];
 
 }

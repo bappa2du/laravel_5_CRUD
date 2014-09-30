@@ -2,7 +2,7 @@
 
 @section('content')
     <h3 class="alert alert-success text-center">Edit Privilege</h3>
-    {!!Form::open()!!}
+    {!!Form::model($settings,["url"=>"/user/settings-edit/{$settings->id}","method"=>"PUT"])!!}
         <div class="table-responsive">
                 <table class="table table-bordered">
                     <tr>
@@ -10,18 +10,18 @@
                         <th colspan="4">Privilege</th>
                     </tr>
                     <tr>
-                        <td>Username</td>
+                        <td>{!! $settings->username !!}</td>
                         <td>
-                        {!!Form::label('create','Create',['class'=>''])!!}
-                        {!!Form::checkbox('create','create',null)!!}
+                        {!!Form::label('create_book','Create',['class'=>''])!!}
+                        {!!Form::checkbox('create_book','create')!!}
                         </td>
                         <td>
-                        {!!Form::label('edit','Edit',['class'=>''])!!}
-                        {!!Form::checkbox('edit','edit',null)!!}
+                        {!!Form::label('edit_book','Edit',['class'=>''])!!}
+                        {!!Form::checkbox('edit_book','edit')!!}
                         </td>
                         <td>
-                        {!!Form::label('delete','Delete',['class'=>''])!!}
-                        {!!Form::checkbox('delete','delete',null)!!}
+                        {!!Form::label('delete_book','Delete',['class'=>''])!!}
+                        {!!Form::checkbox('delete_book','delete')!!}
                         </td>
                         <td>
                         {!!Form::submit('Update',['class'=>'btn btn-sm btn-warning'])!!}
